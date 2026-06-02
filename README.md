@@ -84,25 +84,28 @@ pytest -q tests/                                  # lance les tests
 
 ## 🤖 Transparence sur l'usage de l'IA générative
 
-> Section obligatoire. À compléter honnêtement — voici un canevas à adapter.
-
-**Outils utilisés :** _(ex. : Claude, ChatGPT, Copilot…)_
+**Outils utilisés :** Claude (Anthropic) — via Claude Code (assistant CLI)
 
 **Pour quoi faire :**
-- Génération du squelette modulaire du projet et de l'arborescence.
-- Aide à la rédaction des docstrings et du présent README.
-- _(à compléter : debugging, explication de concepts, etc.)_
+- Génération du squelette modulaire du projet et de l'arborescence (`src/`, `app/`, `tests/`).
+- Aide à l'écriture des fonctions dans `data_loader.py`, `ml_baseline.py`, `models.py`, `training.py`, `evaluation.py`.
+- Migration du chargement de données de TFDS vers HuggingFace Datasets suite aux erreurs 403.
+- Rédaction des messages de commit et du présent README.
+- Debugging (compatibilité scikit-learn 1.7/1.8, types Pylance).
 
-**Ce que j'ai vérifié / modifié moi-même :**
-- _(ex. : j'ai relu et compris chaque fonction de `src/` ; j'ai ajusté les
-  hyperparamètres après mes propres expériences ; j'ai validé les résultats.)_
+**Ce que nous avons vérifié / modifié nous-mêmes :**
+- Relu et compris chaque fonction des modules `src/`.
+- Validé les résultats obtenus (accuracy, F1, courbes d'apprentissage).
+- Testé le pipeline complet de bout en bout dans le notebook.
 
 **Limites rencontrées :**
-- _(ex. : le code généré utilisait une API scikit-learn dépréciée que j'ai dû
-  corriger ; les hyperparamètres suggérés n'étaient pas optimaux pour mon cas.)_
+- Le code généré utilisait `tensorflow-datasets` qui retournait des erreurs 403 sur `storage.googleapis.com` — corrigé en migrant vers HuggingFace Datasets.
+- Certaines suggestions d'hyperparamètres ont nécessité des ajustements après observation des courbes d'apprentissage.
 
-**Ce que j'ai fait sans IA :**
-- _(à compléter — important pour démontrer votre compréhension réelle.)_
+**Ce que nous avons fait sans IA :**
+- Choix et justification du dataset `beans` (Makerere AI Lab) selon les contraintes du sujet.
+- Compréhension des concepts : régularisation L1/L2/ElasticNet, biais/variance, vanishing gradient, transfer learning.
+- Analyse critique des résultats et interprétation des métriques.
 
 ---
 
