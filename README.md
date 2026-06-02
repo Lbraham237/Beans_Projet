@@ -111,10 +111,10 @@ pytest -q tests/                                  # lance les tests
 
 ## 📊 Résultats principaux
 
-_(À compléter après entraînement — tableau comparatif depuis le notebook §7.)_
-
 | Modèle | Accuracy (test) | F1 macro | Paramètres | Temps |
 |--------|----------------|----------|------------|-------|
-| LogReg régularisée (baseline) | … | … | … | … |
-| CNN from scratch | … | … | … | … |
-| Transfer learning (MobileNetV2) | … | … | … | … |
+| LogReg régularisée (baseline) | 63.3 % | 0.634 | 36 864 | rapide |
+| CNN from scratch | 79.7 % | 0.795 | 94 307 | moyen |
+| Transfer learning (MobileNetV2) | **86.7 %** | **0.867** | 2 261 827 | moyen |
+
+> Le transfer learning surpasse nettement la baseline ML (+23 points), confirmant l'apport des features visuelles pré-entraînées sur ImageNet pour une tâche de classification d'images botaniques.
