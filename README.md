@@ -1,6 +1,6 @@
 # 🌱 Classification de maladies du haricot — Projet ML & Deep Learning
 
-> **Auteur·e :** `NOM Prénom` ← ⚠️ À REMPLIR (critère Go/No-Go éliminatoire)
+> **Auteurs :** MVOGO Abraham & MAAROUFI Abdelhamid
 > **Module :** PY-ML-DL-M1 — Introduction au Machine Learning & Deep Learning
 > **Dataset :** [`beans`](https://www.tensorflow.org/datasets/catalog/beans) (Makerere AI Lab, 2020)
 
