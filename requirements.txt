@@ -10,6 +10,11 @@ seaborn>=0.13
 tensorflow>=2.15
 tensorflow-datasets>=4.9
 
+# ── Dataset (beans) ────────────────────────────────
+# L'URL TFDS (storage.googleapis.com/ibeans) renvoie 403 ;
+# on passe par HuggingFace qui héberge le même dataset.
+datasets>=2.19
+
 # ── Dashboard (Jalon 9) ────────────────────────────
 streamlit>=1.30
 pillow>=10.0
