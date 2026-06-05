@@ -1,6 +1,6 @@
 # ── Dashboard (déploiement Streamlit Cloud) ────────────
 numpy>=1.26
-tensorflow>=2.15
+tensorflow-cpu>=2.15
 streamlit>=1.30
 pillow>=10.0
 
