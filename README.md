@@ -1,5 +1,8 @@
 # 🌱 Beans Disease Classifier
 
+> **Auteurs : MVOGO Abraham & MAAROUFI Abdelhamid** — M2 IA, IPSSI Lyon
+> Module : PY-ML-DL — Introduction au Machine Learning & Deep Learning
+
 > Détection automatique de maladies du haricot par photo — Machine Learning & Deep Learning
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://beansprojet-cx7e3tuahngmv6oexwsust.streamlit.app/)
@@ -75,6 +78,33 @@ python -m venv .venv && .venv\Scripts\activate
 pip install -r requirements-dev.txt
 streamlit run app/dashboard.py
 ```
+
+---
+
+## 🤖 Transparence sur l'usage de l'IA générative
+
+**Outils utilisés :** Claude (Anthropic) via Claude Code (assistant CLI)
+
+**Utilisé pour :**
+- Génération du squelette modulaire (`src/`, `app/`, `tests/`) et de l'arborescence du projet
+- Aide à l'écriture des fonctions dans `data_loader.py`, `ml_baseline.py`, `models.py`, `training.py`, `evaluation.py`
+- Migration du chargement de données de TFDS vers HuggingFace Datasets (erreurs 403 sur `storage.googleapis.com`)
+- Rédaction des messages de commit et du README
+- Debugging (compatibilité scikit-learn 1.7/1.8, types Pylance)
+- Conversion du modèle en ONNX et déploiement Streamlit Cloud
+
+**Ce que nous avons vérifié et fait nous-mêmes :**
+- Lu et compris chaque fonction des modules `src/`
+- Validé les résultats (accuracy, F1, courbes d'apprentissage)
+- Testé le pipeline complet de bout en bout dans le notebook
+- Choix et justification du dataset `beans` selon les contraintes du sujet
+- Analyse critique des résultats et interprétation des métriques
+- Compréhension des concepts : régularisation L1/L2/ElasticNet, biais/variance, vanishing gradient, transfer learning
+
+**Limites rencontrées :**
+- Le code généré utilisait `tensorflow-datasets` qui retournait des erreurs 403 — corrigé en migrant vers HuggingFace Datasets
+- Certains hyperparamètres suggérés ont nécessité des ajustements après observation des courbes d'apprentissage
+- TensorFlow incompatible avec Python 3.14 sur Streamlit Cloud — résolu par conversion ONNX
 
 ---
 
