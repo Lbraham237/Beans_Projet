@@ -120,4 +120,4 @@ pytest -q tests/                                  # lance les tests
 
 > Le transfer learning surpasse nettement la baseline ML (+23 points), confirmant l'apport des features visuelles pré-entraînées sur ImageNet pour une tâche de classification d'images botaniques.
 >
-> <video controls src="Beans Disease Classifier - Google Chrome 2026-06-05 09-48-03.mp4" title="Title"></video>
+![Demo dashboard](demo_dashboard.gif)
