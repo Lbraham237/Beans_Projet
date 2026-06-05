@@ -20,7 +20,7 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.data_loader import CLASS_NAMES, DEFAULT_IMG_SIZE  # noqa: E402
 
-MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "transfer_beans.keras"
+MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "transfer_beans.onnx"
 LABEL_FR = {
     "angular_leaf_spot": "Tache angulaire 🦠",
     "bean_rust": "Rouille du haricot 🍂",
@@ -30,18 +30,16 @@ LABEL_FR = {
 
 @st.cache_resource
 def load_model():
-    """Charge le modèle entraîné (mis en cache entre les interactions)."""
-    from tensorflow.keras.models import load_model as _load
+    import onnxruntime as ort
     if not MODEL_PATH.exists():
         return None
-    return _load(MODEL_PATH)
+    return ort.InferenceSession(str(MODEL_PATH), providers=["CPUExecutionProvider"])
 
 
 def preprocess(pil_image, img_size: int = DEFAULT_IMG_SIZE) -> np.ndarray:
-    """Prépare l'image uploadée comme à l'entraînement : resize + normalisation."""
     img = pil_image.convert("RGB").resize((img_size, img_size))
     arr = np.asarray(img, dtype=np.float32) / 255.0
-    return arr[np.newaxis, ...]  # ajout dimension batch
+    return arr[np.newaxis, ...]
 
 
 def main():
@@ -49,12 +47,9 @@ def main():
     st.title("🌱 Détection de maladies du haricot")
     st.caption("Projet ML/DL — classification de feuilles (dataset beans, Makerere AI Lab)")
 
-    model = load_model()
-    if model is None:
-        st.warning(
-            "Aucun modèle trouvé. Entraînez d'abord le CNN dans le notebook "
-            "et sauvegardez-le dans `models/cnn_beans.keras`."
-        )
+    session = load_model()
+    if session is None:
+        st.warning("Aucun modèle trouvé dans `models/transfer_beans.onnx`.")
         st.stop()
 
     uploaded = st.file_uploader("Choisissez une photo de feuille",
@@ -68,7 +63,8 @@ def main():
     st.image(image, caption="Image fournie", use_container_width=True)
 
     x = preprocess(image)
-    probs = model.predict(x, verbose=0)[0]
+    input_name = session.get_inputs()[0].name
+    probs = session.run(None, {input_name: x})[0][0]
     idx = int(np.argmax(probs))
     pred = CLASS_NAMES[idx]
 
