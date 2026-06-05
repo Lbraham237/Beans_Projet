@@ -80,4 +80,4 @@ streamlit run app/dashboard.py
 
 ## Auteurs
 
-**MVOGO Abraham** & **MAAROUFI Abdelhamid** — M1 IA, IPSSI Lyon
+**MVOGO Abraham** & **MAAROUFI Abdelhamid** — M2 IA, IPSSI Lyon
