@@ -20,7 +20,7 @@ import streamlit as st
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.data_loader import CLASS_NAMES, DEFAULT_IMG_SIZE  # noqa: E402
 
-MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "cnn_beans.keras"
+MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "transfer_beans.keras"
 LABEL_FR = {
     "angular_leaf_spot": "Tache angulaire 🦠",
     "bean_rust": "Rouille du haricot 🍂",

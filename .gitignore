@@ -11,10 +11,11 @@ data/
 
 # Modèles entraînés (lourds — à régénérer)
 *.h5
-*.keras
 *.pkl
 *.joblib
-models/
+# Les modèles finaux sont versionnés pour le déploiement Streamlit Cloud
+!models/cnn_beans.keras
+!models/transfer_beans.keras
 
 # Python
 __pycache__/

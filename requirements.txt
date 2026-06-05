@@ -1,27 +1,8 @@
-# ── Cœur Data Science ──────────────────────────────
+# ── Dashboard (déploiement Streamlit Cloud) ────────────
 numpy>=1.26
-pandas>=2.0
-scikit-learn>=1.4
-matplotlib>=3.8
-seaborn>=0.13
-
-# ── Deep Learning ──────────────────────────────────
-# Sur Apple Silicon, remplacer par : tensorflow-macos + tensorflow-metal
 tensorflow>=2.15
-tensorflow-datasets>=4.9
-
-# ── Dataset (beans) ────────────────────────────────
-# L'URL TFDS (storage.googleapis.com/ibeans) renvoie 403 ;
-# on passe par HuggingFace qui héberge le même dataset.
-datasets>=2.19
-
-# ── Dashboard (Jalon 9) ────────────────────────────
 streamlit>=1.30
 pillow>=10.0
 
-# ── Notebook ───────────────────────────────────────
-jupyter>=1.0
-notebook>=7.0
-
-# ── Tests (Bonus CI/CD) ────────────────────────────
-pytest>=8.0
+# ── Dev / Notebook (local uniquement) ─────────────────
+# pip install -r requirements-dev.txt
